@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Row from '../components/Row'
 import { Movie } from '../typings'
 import requests from '../utils/requests'
+import axios from 'axios'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -27,6 +28,7 @@ const Home = ({
   topRated,
   trendingNow,
 }: Props) => {
+
   return (
     <div  className={`relative h-screen bg-gradient-to-b from-gray-900/10 to-[#010511] lg:h-[140vh]`}>
       <Head>
@@ -57,6 +59,9 @@ export default Home
 
 export const getServerSideProps = async () => {
 
+/*
+  Requests using fetch api
+
   const [
     netflixOriginals,
     trendingNow,
@@ -76,7 +81,30 @@ export const getServerSideProps = async () => {
     fetch(requests.fetchRomanceMovies).then((res) => res.json()),
     fetch(requests.fetchDocumentaries).then((res) => res.json()),
   ])
-  
+  */
+
+  //Requests using axios api
+  const [
+    netflixOriginals,
+    trendingNow,
+    topRated,
+    actionMovies,
+    comedyMovies,
+    horrorMovies,
+    romanceMovies,
+    documentaries,
+  ] = await Promise.all([
+    axios.get(requests.fetchNetflixOriginals).then(e => e.data),
+    axios.get(requests.fetchTrending).then(e => e.data),
+    axios.get(requests.fetchTopRated).then(e => e.data),
+    axios.get(requests.fetchActionMovies).then(e => e.data),
+    axios.get(requests.fetchComedyMovies).then(e => e.data),
+    axios.get(requests.fetchHorrorMovies).then(e => e.data),
+    axios.get(requests.fetchRomanceMovies).then(e => e.data),
+    axios.get(requests.fetchDocumentaries).then(e => e.data)
+  ])
+
+
   return {
     props: {
       netflixOriginals: netflixOriginals.results,
