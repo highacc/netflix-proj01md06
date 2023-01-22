@@ -93,7 +93,7 @@ import {
         .catch((error) => alert(error.message))
         .finally(() => setLoading(false))
     }
-  
+    // Ps.: Just for future references, I learnt this hook on Sonny Sangha video Spotify 2.0 build.  
     const memoedValue = useMemo(
       () => ({ user, signUp, signIn, error, loading, logout }),
       [user, loading, error]
@@ -106,8 +106,6 @@ import {
     )
   }
   
-  // Let's only export the `useAuth` hook instead of the context.
-  // We only want to use the hook directly and never the context comopnent.
   export default function useAuth() {
     return useContext(AuthContext)
   }
