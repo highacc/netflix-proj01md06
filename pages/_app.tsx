@@ -6,8 +6,7 @@ import { RecoilRoot } from 'recoil'
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <RecoilRoot>
-      {/* Higher Order Component */}
-      <AuthProvider>
+        <AuthProvider>
         <Component {...pageProps} />
       </AuthProvider>
     </RecoilRoot>
