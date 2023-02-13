@@ -84,6 +84,7 @@ function Plans({ products }: Props) {
             ))}
           </div>
 
+
           <Table products={products} selectedPlan={selectedPlan} />
 
           <button

@@ -6,6 +6,7 @@ interface Props {
   selectedPlan: Product | null
 }
 
+
 function Table({ products, selectedPlan }: Props) {
   return (
     <table>
