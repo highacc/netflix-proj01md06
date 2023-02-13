@@ -1,4 +1,5 @@
 import { getProducts, Product } from '@stripe/firestore-stripe-payments'
+import axios from 'axios'
 import Head from 'next/head'
 import { useRecoilValue } from 'recoil'
 import { modalState, movieState } from '../atoms/modalAtom'
@@ -13,7 +14,6 @@ import useSubscription from '../hooks/useSubscription'
 import payments from '../lib/stripe'
 import { Movie } from '../typings'
 import requests from '../utils/requests'
-import axios from 'axios'
 
 interface Props {
   netflixOriginals: Movie[]
@@ -93,31 +93,7 @@ export const getServerSideProps = async () => {
   })
     .then((res) => res)
     .catch((error) => console.log(error.message))
-/*
-  Requests using fetch api
-
-  const [
-    netflixOriginals,
-    trendingNow,
-    topRated,
-    actionMovies,
-    comedyMovies,
-    horrorMovies,
-    romanceMovies,
-    documentaries,
-  ] = await Promise.all([
-    fetch(requests.fetchNetflixOriginals).then((res) => res.json()),
-    fetch(requests.fetchTrending).then((res) => res.json()),
-    fetch(requests.fetchTopRated).then((res) => res.json()),
-    fetch(requests.fetchActionMovies).then((res) => res.json()),
-    fetch(requests.fetchComedyMovies).then((res) => res.json()),
-    fetch(requests.fetchHorrorMovies).then((res) => res.json()),
-    fetch(requests.fetchRomanceMovies).then((res) => res.json()),
-    fetch(requests.fetchDocumentaries).then((res) => res.json()),
-  ])
-  */
-
-  //Requests using axios api
+    
   const [
     netflixOriginals,
     trendingNow,
@@ -138,7 +114,6 @@ export const getServerSideProps = async () => {
     axios.get(requests.fetchDocumentaries).then(e => e.data)
   ])
 
-
   return {
     props: {
       netflixOriginals: netflixOriginals.results,
@@ -153,3 +128,9 @@ export const getServerSideProps = async () => {
     },
   }
 }
+
+
+
+
+
+
