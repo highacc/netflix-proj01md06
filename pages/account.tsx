@@ -20,6 +20,7 @@ function Account({ products }: Props) {
 
   if (loading) return null
 
+  
   console.log(subscription)
   return (
     <div className="">
