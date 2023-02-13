@@ -38,6 +38,7 @@ const Home = ({
   trendingNow,
   products,
 }: Props) => {
+  console.log(products)
   const { user, loading } = useAuth()
   const subscription = useSubscription(user)
   const showModal = useRecoilValue(modalState)
@@ -71,7 +72,7 @@ const Home = ({
           <Row title="Top Rated" movies={topRated} />
           <Row title="Action Thrillers" movies={actionMovies} />
           {/* My List */}
-          {/* {list.length > 0 && <Row title="My List" movies={list} />} */}
+          {list.length > 0 && <Row title="My List" movies={list} />}
 
           <Row title="Comedies" movies={comedyMovies} />
           <Row title="Scary Movies" movies={horrorMovies} />
