@@ -4,6 +4,7 @@ import useSubscription from '../hooks/useSubscription'
 import { goToBillingPortal } from '../lib/stripe'
 import Loader from './Loader'
 
+
 function Membership() {
   const { user } = useAuth()
   const subscription = useSubscription(user)
