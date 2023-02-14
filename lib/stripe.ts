@@ -20,6 +20,7 @@ import {
       .catch((error) => console.log(error.message))
   }
   
+  
   const goToBillingPortal = async () => {
     const instance = getFunctions(app, 'us-central1')
     const functionRef = httpsCallable(
